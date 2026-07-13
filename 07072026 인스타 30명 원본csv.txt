@@ -1,0 +1,168 @@
+1.	csv
+Profile Name,Follower Count,Description
+"hhhhhana_rume","1.1만","?? 한배부부?? | 릴스 각 만생각하는 부부 | 공구로 
+신랑먹여살리고픈 뇨자
+?? 2017.09.06~부부??? 현재임신중
+?? 신혼집계정 @hanbae__bubu
+?? ?공구구매 링크
+litt.ly/hhhhhana_rume
+hhhhhana_rume
+ 
+2.	csv
+Profile Name,Follower Count,Description
+"jungjunglovelove","4.1만","정정살림 : 말로하는살림?? 
+link.inpock.co.kr/jungjunglovelove"
+ 
+3.	csv
+Username,Follower Count,Description
+ssolmangssolmang,1.4만,"??슬립푼 냉감패드 공동구매 핫딜?? 12만 YouTube 
+쏠망쏠망 아기집사님?? @angellang_22 광고문의 k7948@naver.com or DM"
+miwoo_golden,N/A,미우맘
+chun_bong._.bro,N/A,"춘봉브로 | 춘식은봉형제 | 애개육아"
+gggggangchi,N/A,"고운? I 애개육아, 로트와일러, 여행 ??"
+wangsoli,N/A,왕솔이
+bbostar,N/A,뽀스타
+mayo_pori,N/A,마요포리
+haeristagram,N/A,해리
+nico.nico_nnie,N/A,니코니
+gsyulmu__,N/A,율무
+ 
+4.	csv
+Profile Name,Follower Count,Description
+"selly__home","팔로워 7.6만","샐리홈 | 셀프 인테리어
+복구가능한 인테리어템을 소개해요??
+-
+??모듈 수납장 open!
+link.inpock.co.kr/selly__home"
+ 
+5.	csv
+Profile Name,Follower Count,Description
+"hommongmong","108.6만","?? 7/6-7/8 #네이티브슈즈 ?? 7/9-7/12 #이지탭 
+#클리닝스탠드이지탭사이즈 ??제품구매 & 부꾸미고객센터 하단 링크 클릭??"
+ 
+6.	csv
+Display Name,Followers,Description
+"natashablue_life","팔로워 6.3만","나타샤블루(한민경) | 살림하는 여자 13만 살림 
+유튜버?? 쓰임새 좋은 살림 ? 집꾸미기 ??숲 속 타운하우스에 살아요 
+link.inpock.co.kr/natashablue natashablue_life eiumcompany님, ryuniiii님 외 4명이 
+팔로우합니다"
+7.	csv
+Profile Name,Followers,Description
+"jini__home_","13만","지니홈 일상을 함께할 쓰임새 좋은 살림??? ??고트만 
+밀폐용기??연중 최대 초특가 ??레꼴뜨 무선 초퍼? 오늘마감 
+inpk.link/jini__home_"
+ 
+8.	csv
+Profile Name,Stats,Description
+"ssunyhome","1,024 posts | 143K followers | 521 following","?? 7/6-7/8 #네이티브슈즈 ?? 
+7/9-7/12 #이지탭 #클리닝스탠드이지탭사이즈 ??제품구매 & 부꾸미고객센터 하단 
+링크 클릭??"
+ 
+9.	csv
+Profile Name,Follower Count,Description
+"dongchae___","25.2만","동채?? 요리하는 아내?????? 깐족대는 남편????♂? 맛있고 재밌는 
+동갑부부 이야기 ????롤링카트 끝판왕???? link.inpock.co.kr/rainbow_77"
+ 
+10.	csv
+Profile Name,Followers,Description
+"오포꼼댁 손희진","N/A","10년차 셀럽 & 주부 & 꼼이??엄마 | 제가 사용하고 
+싶은 것들을 소개해 드려요. 공구중인 제품은 아래의 링크 클릭"
+ 
+11.	csv
+Profile Name,Followers,Description
+"홈멍멍 최혜미","N/A","?? 7/6-7/8 #네이티브슈즈 ?? 7/9-7/12 #이지탭 
+#클리닝스탠드이지탭사이즈 ??제품구매 & 부꾸미고객센터 하단 링크 클릭??"
+ 
+12.	csv
+Profile Name,Followers,Description
+"@블러썸","N/A","Digital creator 문의 miffy2659@naver.com DM?? 리빙인플루언서??"
+ 
+13.	csv
+Profile Name,Followers,Description
+"금쪽같은 내한끼","N/A","Reel creator | 20만 요리 유튜버?? | 12년차 ??'내열뚝배기 
+장인'??"
+ 
+14.	csv
+Profile Name,Followers,Description
+"현정 | 웅이네 집밥 레시피 | 마마조","N/A","?? 따라 하기 쉬운 워킹맘의 집밥 
+레시피 | ??에바솔로 X 오늘의집 초특가 기획전[7/6~12]"
+ 
+15.	csv
+Profile Name,Followers,Description
+"떠아니네ㅣ mihye kim","N/A","Digital creator | 가성비 육아템 소개 | 정보 공유는 덤 
+| 서안룩은 늘 힙 ootd"
+ 
+16.	csv
+Profile Name,Followers,Description
+"프라우허 허유정","N/A","Personal blog | 일상이 유쾌 무해하길 바라며 살림합니다. 
+소심하게나마 쓰레기를 줄이고 있어요. 디엠은 모두 확인이 어려워 CS및 문의는 
+@frh.co.kr !"
+17.	csv
+Profile Name,Followers,Description
+"프라우허 허유정","N/A","Personal blog | 일상이 유쾌 무해하길 바라며 살림합니다. 
+소심하게나마 쓰레기를 줄이고 있어요. 디엠은 모두 확인이 어려워 CS및 문의는 
+@frh.co.kr !"
+18.	csv
+Profile Name,Followers,Description
+"쏜언니","N/A","40대??쏜언니의 취향기반 라이프스타일! 추구미는 "퀄리티&가심비" 
+비싸도 퀄리티 좋은 거 사서 [오래 쓰는 거 좋아함]"
+ 
+19.	csv
+Profile Name,Followers,Description
+"김영은","N/A","당신과 나의 매일을 joyful하게! CS는 카톡 '조이풀영은'???? 
+이벤트당첨 발표는 @joyful__team"
+ 
+20.	csv
+Profile Name,Followers,Description
+"땡스맘","N/A","??홈세탁으로 수다떠는 옆집언니 ??나는 소비요정?? ?이벤트 
+확인은 @thanks_event_"
+ 
+21.	csv
+Profile Name,Followers,Description
+"망구미 | 일상에 도움이 되는 소소한 이야기","N/A","?? 20년 구축 아파트 | ?? 
+소분중독 코스트코 매니아 | ?? 좋은 제품 소개해요"
+ 
+ 
+22.	csv
+Profile Name,Followers,Description
+"킴줌마 김애정","N/A","장비빨로 빠르게 끝내는 현실 살림 | 깨끗한 집 유지하는 
+루틴??"
+ 
+23.csv
+Profile Name,Followers,Description
+"5인가족 살림살이 | 김채윤","N/A","아들 셋, 미니멀라이프와 정리정돈 그 사이 ?? 
+5 of us ??"
+ 
+23.	csv
+Profile Name,Followers,Description
+"요오리?? 시간과 에너지 아끼는 집밥과 살림","N/A","??????시간 에너지 아끼는 
+#바빠도건강집밥 | <냉동 집밥 대백과> 베스트셀러 저자? | ??7/13 글로벌나이프 
+??7/20 땡스소윤 냉동용기"
+ 
+ 
+24.	csv
+Profile Name,Followers,Description
+"강다연","N/A","건강다연 | 오늘 하루도 몸과 마음 건강하게 ?? 
+??jubuhead@gmail.com"
+ 
+25.	csv
+Profile Name,Followers,Description
+"시란 Siran","N/A","모유수유하며 두 아이 육아중 운동, 건강식, 육아 브이로그?????? 
+많이 물어보시는 제품은 아래 링크에"
+ 
+26.	csv
+Profile Name,Followers,Description
+"레이첼민선 ?? minseon hwang","N/A","?? +??= ?? ?? | ??모든 문의는 
+카톡플친'레이첼민선' | 잇라피 @itrapi_official 온데이즈 @ondays.co.kr"
+ 
+27.	csv
+Profile Name,Followers,Description
+"유영비 | 우유마켓","N/A","Shopping & retail | 내 기준 1등 아니면 마켓 안 열어요 | 
+부산 정착러의 야무진 취향 릴스 속 저만의 찐템???? 7월 마켓: 위닉스 뽀송, 뷰니스, 
+닥터포헤어 세럼"
+ 
+28.	csv
+Profile Name,Followers,Description
+"깐깐한언니 | 돌싱글즈6진영","N/A","?? 깐깐하게 따지고 사는 언니 | ?? 6-9일 : 
+가쉬 버블팩(2차) | ?? 10-14일 : 한현재쿠션(4차)"
+
