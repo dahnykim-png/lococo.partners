@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Header() {
+  const { language, toggleLanguage, t } = useLanguage();
+
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
     const element = document.getElementById(targetId);
@@ -57,36 +60,66 @@ export default function Header() {
         </span>
       </a>
 
-      {/* Navigation Links */}
-      <nav style={{ display: 'flex', gap: '32px', marginRight: '64px' }}>
-        {[
-          { id: 'about', label: '소개 (About)' },
-          { id: 'service', label: '서비스 (Service)' },
-          { id: 'portfolio', label: '포트폴리오 (History)' },
-          { id: 'contact', label: '문의하기 (Contact)' }
-        ].map((item) => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            onClick={(e) => handleNavClick(e, item.id)}
-            className="nav-link"
-            style={{
-              textDecoration: 'none',
-              fontSize: '0.875rem',
-              fontWeight: '500',
-              color: 'var(--color-silver-mist)',
-              transition: 'color 0.2s ease',
-              letterSpacing: '0.02em'
-            }}
-          >
-            {item.label}
-          </a>
-        ))}
-      </nav>
+      {/* Navigation Links and Language Toggle Wrapper */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <nav style={{ display: 'flex', gap: '32px' }}>
+          {[
+            { id: 'about', label: t('nav_about') },
+            { id: 'service', label: t('nav_service') },
+            { id: 'portfolio', label: t('nav_portfolio') },
+            { id: 'contact', label: t('nav_contact') }
+          ].map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => handleNavClick(e, item.id)}
+              className="nav-link"
+              style={{
+                textDecoration: 'none',
+                fontSize: '0.875rem',
+                fontWeight: '500',
+                color: 'var(--color-silver-mist)',
+                transition: 'color 0.2s ease',
+                letterSpacing: '0.02em'
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Language Toggle Capsule Button */}
+        <button
+          onClick={toggleLanguage}
+          className="lang-toggle-btn"
+          style={{
+            background: 'rgba(255, 255, 255, 0.04)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '99px',
+            padding: '6px 16px',
+            cursor: 'pointer',
+            fontSize: '0.75rem',
+            fontWeight: '700',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}
+        >
+          <span style={{ color: language === 'ko' ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.4)' }}>KO</span>
+          <span style={{ color: 'rgba(255, 255, 255, 0.15)' }}>/</span>
+          <span style={{ color: language === 'en' ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.4)' }}>EN</span>
+        </button>
+      </div>
 
       <style dangerouslySetInnerHTML={{__html: `
         .nav-link:hover {
           color: #ffffff !important;
+        }
+        .lang-toggle-btn:hover {
+          background-color: rgba(255, 255, 255, 0.08) !important;
+          border-color: rgba(255, 255, 255, 0.2) !important;
+          transform: translateY(-1px);
         }
         @media (max-width: 768px) {
           header {

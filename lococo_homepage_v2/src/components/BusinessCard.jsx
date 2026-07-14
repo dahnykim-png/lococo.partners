@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function BusinessCard() {
+  const { t } = useLanguage();
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
@@ -42,7 +44,7 @@ export default function BusinessCard() {
             transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
-          명함 앞면 (Front)
+          {t('card_toggle_front')}
         </button>
         <button
           onClick={() => setIsFlipped(true)}
@@ -58,7 +60,7 @@ export default function BusinessCard() {
             transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
-          명함 뒷면 (Back)
+          {t('card_toggle_back')}
         </button>
       </div>
 
@@ -111,14 +113,13 @@ export default function BusinessCard() {
           {/* Right Area: Contact Info */}
           <div style={{ width: '54%', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', textAlign: 'left' }}>
             {/* Name */}
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '2px' }}>
-              <span style={{ fontSize: '18px', fontWeight: '700', color: '#222222', letterSpacing: '0.05em', fontFamily: 'var(--font-body)' }}>김 단</span>
-              <span style={{ fontSize: '10px', color: '#777777', fontWeight: '500', fontFamily: 'var(--font-body)' }}>DAHN KIM</span>
-            </div>
-            
-            {/* Title */}
-            <div style={{ fontSize: '10px', color: '#555555', fontWeight: '600', letterSpacing: '0.02em', marginBottom: '8px' }}>
-              매니저 Manager
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginBottom: '8px' }}>
+              <span style={{ fontSize: '22px', fontWeight: '800', color: '#222222', letterSpacing: '0.05em', fontFamily: 'var(--font-body)', lineHeight: '1.1' }}>
+                {t('card_name_top')}
+              </span>
+              <span style={{ fontSize: '11px', fontWeight: '400', color: '#666666', letterSpacing: '0.08em', fontFamily: 'var(--font-body)', lineHeight: '1.2', textTransform: 'uppercase' }}>
+                {t('card_name_bottom')}
+              </span>
             </div>
 
             {/* Divider line */}
@@ -186,18 +187,17 @@ export default function BusinessCard() {
           {/* Left Area: Slogan & Mission Statement */}
           <div style={{ width: '60%', display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', textAlign: 'left' }}>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: '800', letterSpacing: '0.05em', color: '#8c583a' }}>
-              LOCOCO PARTNERS
+              {t('card_back_title')}
             </span>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', fontWeight: '700', color: '#222222', marginTop: '2px', wordBreak: 'keep-all' }}>
-              브랜드와 크리에이터를 잇는 공동구매 파트너
+              {t('card_back_subtitle')}
             </span>
             
             {/* Horizontal Line */}
             <div style={{ height: '1px', backgroundColor: 'rgba(140, 88, 58, 0.15)', width: '80%', margin: '14px 0' }} />
             
             <p style={{ fontSize: '9px', color: '#555555', lineHeight: '1.6', wordBreak: 'keep-all', margin: 0 }}>
-              좋은 셀렉션이 좋은 크리에이터를 만나는 방식,<br />
-              로코코 파트너스가 함께 만듭니다.
+              {t('card_back_description')}
             </p>
           </div>
 
@@ -216,7 +216,7 @@ export default function BusinessCard() {
 
       {/* Touch to Flip Tip */}
       <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.05em' }}>
-        💡 명함 카드를 클릭하면 앞뒷면을 뒤집어 볼 수 있습니다
+        {t('card_tip')}
       </span>
 
       <style dangerouslySetInnerHTML={{__html: `

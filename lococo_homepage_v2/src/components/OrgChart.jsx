@@ -1,52 +1,77 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const pipelineSteps = [
   {
     id: 1,
     title: 'Brand Sourcing',
     koreanTitle: '브랜드 소싱 & 셀렉션 검증',
+    enTitle: 'Brand Sourcing & Selection Verification',
     desc: '브랜드의 진정성 있는 스토리와 엄격히 검증된 프리미엄 셀렉션을 소싱합니다.',
-    details: ['브랜드 역량 분석', '셀렉션 정밀 검증', '독점 계약 및 단가조율']
+    enDesc: 'We source premium selections built on authentic brand stories and rigorous verification.',
+    details: ['브랜드 역량 분석', '셀렉션 정밀 검증', '독점 계약 및 단가조율'],
+    enDetails: ['Brand Capability Analysis', 'Precision Selection Verification', 'Exclusive Contracting & Price Negotiation']
   },
   {
     id: 2,
     title: 'Data Matchmaking',
     koreanTitle: '데이터 기반 크리에이터 매칭',
+    enTitle: 'Data-Driven Creator Matchmaking',
     desc: '크리에이터 셀러의 팔로워 성향과 판매 이력을 빅데이터로 정밀 분석하여 브랜드에 가장 완벽한 파트너를 매칭합니다.',
-    details: ['팔로워 성향 분석', '카테고리 매칭', '판매 성과 예측']
+    enDesc: 'We precisely analyze creator demographics and sales history with big data to match the most perfect partner for your brand.',
+    details: ['팔로워 성향 분석', '카테고리 매칭', '판매 성과 예측'],
+    enDetails: ['Follower Demographics Analysis', 'Category Matchmaking', 'Sales Performance Prediction']
   },
   {
     id: 3,
     title: 'Campaign Design',
     koreanTitle: '독점 패키지 & 캠페인 기획',
+    enTitle: 'Exclusive Package & Campaign Planning',
     desc: '시장 트렌드와 셀러의 개성을 융합하여 독보적인 가치를 가진 단독 판매 전략과 스토리텔링형 구성을 기획합니다.',
-    details: ['단독 패키지 구성', '캠페인 일정 설계', '브랜드 가이드 수립']
+    enDesc: 'We combine market trends and seller uniqueness to plan exclusive sales strategies and storytelling configurations.',
+    details: ['단독 패키지 구성', '캠페인 일정 설계', '브랜드 가이드 수립'],
+    enDetails: ['Exclusive Package Setup', 'Campaign Timeline Design', 'Brand Guideline Setup']
   },
   {
     id: 4,
     title: 'Content Strategy',
     koreanTitle: '콘텐츠 전략 & 숏폼 설계',
+    enTitle: 'Content Strategy & Short-Form Design',
     desc: '소비자의 구매 전환을 직관적으로 유도하고 신뢰도를 높여주는 크리에이터 맞춤 피드 및 바이럴 숏폼 제작을 가이드합니다.',
-    details: ['피드 콘텐츠 구성', '숏폼 연출 가이드', '셀링 포인트 최적화']
+    enDesc: 'We guide creators in producing tailored feed content and viral short-form videos to drive direct conversions and trust.',
+    details: ['피드 콘텐츠 구성', '숏폼 연출 가이드', '셀링 포인트 최적화'],
+    enDetails: ['Feed Content Planning', 'Short-form Direction Guide', 'Selling Point Optimization']
   },
   {
     id: 5,
     title: 'Logistics & Settlement',
     koreanTitle: '유통 물류 & 정교한 정산',
+    enTitle: 'Logistics, Fulfillment & Smart Settlement',
     desc: '대규모 공구 주문에도 끄떡없는 견고한 풀필먼트 연동과 실시간 판매 데이터를 투명하게 증명하는 스마트 정산 시스템을 제공합니다.',
-    details: ['풀필먼트 물류 연동', '자동 배송 처리', '실시간 정산 정비']
+    enDesc: 'We provide robust fulfillment integrations to handle large scale group orders and transparent, smart settlements.',
+    details: ['풀필먼트 물류 연동', '자동 배송 처리', '실시간 정산 정비'],
+    enDetails: ['Fulfillment Logistics Integration', 'Automated Delivery Processing', 'Real-time Settlement Setup']
   },
   {
     id: 6,
     title: 'Performance Analysis',
     koreanTitle: '성과 분석 & 2차 앵콜 기획',
+    enTitle: 'Performance Analysis & 2nd Round Planning',
     desc: '공동구매 판매 결과를 세밀하게 추적하고 피드백을 수집하여, 확실한 매출 우상향 곡선을 그리는 재앵콜 캠페인을 기획합니다.',
-    details: ['재구매 지표 분석', 'CS 피드백 반영', '2차 앵콜 기획']
+    enDesc: 'We closely track group purchasing results and collect feedback to plan follow-up campaigns that secure upward sales curves.',
+    details: ['재구매 지표 분석', 'CS 피드백 반영', '2차 앵콜 기획'],
+    enDetails: ['Repurchase Metrics Analysis', 'CS Feedback Incorporation', '2nd Round Campaign Planning']
   }
 ];
 
 export default function OrgChart() {
+  const { language, t } = useLanguage();
   const [activeStep, setActiveStep] = useState(1);
+
+  const activeStepData = pipelineSteps[activeStep - 1];
+  const activeTitle = language === 'ko' ? activeStepData.koreanTitle : activeStepData.enTitle;
+  const activeDesc = language === 'ko' ? activeStepData.desc : activeStepData.enDesc;
+  const activeDetails = language === 'ko' ? activeStepData.details : activeStepData.enDetails;
 
   return (
     <div className="org-chart-wrapper" style={{ width: '100%' }}>
@@ -63,6 +88,7 @@ export default function OrgChart() {
       >
         {pipelineSteps.map((step) => {
           const isActive = activeStep === step.id;
+          const stepMiniTitle = language === 'ko' ? step.koreanTitle : step.enTitle;
           return (
             <div
               key={step.id}
@@ -125,7 +151,7 @@ export default function OrgChart() {
 
               {/* Mini description */}
               <p style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.4)' }}>
-                {step.koreanTitle}
+                {stepMiniTitle}
               </p>
             </div>
           );
@@ -188,7 +214,7 @@ export default function OrgChart() {
               border: '1px solid rgba(227, 38, 82, 0.2)'
             }}
           >
-            PIPELINE STEP 0{activeStep}
+            {t('process_step_prefix')} 0{activeStep}
           </span>
 
           <h3 
@@ -200,11 +226,11 @@ export default function OrgChart() {
               color: '#ffffff'
             }}
           >
-            {pipelineSteps[activeStep-1].koreanTitle}
+            {activeTitle}
           </h3>
 
           <p className="body-md" style={{ color: 'rgba(255,255,255,0.7)', lineHeight: '1.7', wordBreak: 'keep-all' }}>
-            {pipelineSteps[activeStep-1].desc}
+            {activeDesc}
           </p>
         </div>
 
@@ -228,11 +254,11 @@ export default function OrgChart() {
               marginBottom: '16px'
             }}
           >
-            핵심 태스크 및 유통 실천 가이드
+            {language === 'ko' ? '핵심 태스크 및 유통 실천 가이드' : 'Core Tasks & Distribution Practice Guide'}
           </h4>
           
           <div className="pipeline-details-list">
-            {pipelineSteps[activeStep-1].details.map((detail, idx) => (
+            {activeDetails.map((detail, idx) => (
               <React.Fragment key={idx}>
                 {idx > 0 && <div className="pipeline-details-separator" />}
                 <div 
@@ -242,7 +268,7 @@ export default function OrgChart() {
                     gap: '8px',
                     fontSize: 'clamp(0.75rem, 1.2vw, 0.8125rem)',
                     color: 'rgba(255, 255, 255, 0.85)',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: language === 'ko' ? 'nowrap' : 'normal'
                   }}
                 >
                   {/* Custom check marker */}

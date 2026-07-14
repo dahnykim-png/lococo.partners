@@ -98,79 +98,103 @@ export default function SoundController() {
     <div 
       className="sound-controller-container"
       style={{
-        position: 'fixed',
-        top: '24px',
-        right: '24px',
-        zIndex: 1000,
         display: 'flex',
         alignItems: 'center',
-        gap: '12px',
-        pointerEvents: 'auto'
+        gap: '10px',
+        pointerEvents: 'auto',
+        backgroundColor: 'rgba(255, 255, 255, 0.04)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: '99px',
+        padding: '4px 14px 4px 6px',
+        backdropFilter: 'blur(8px)',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
     >
-      {/* Sound wave visual feedback when playing */}
-      {isPlaying && (
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '3px', height: '16px' }}>
-          {[1, 2, 3, 4].map((bar) => (
-            <div
-              key={bar}
-              style={{
-                width: '3px',
-                backgroundColor: 'var(--color-primary-container)',
-                borderRadius: '99px',
-                animation: `soundWave ${0.5 + bar * 0.15}s ease-in-out infinite alternate`,
-                animationDelay: `${bar * 0.1}s`
-              }}
-            />
-          ))}
-        </div>
-      )}
-      
-      {/* BGM Toggle Button */}
+      {/* BGM Toggle Button (vinyl style rotation) */}
       <button
         onClick={toggleSound}
         className="sound-toggle-btn"
         aria-label="Toggle Background Music"
         style={{
-          backgroundColor: isPlaying ? 'var(--color-primary-container)' : 'rgba(18, 19, 22, 0.85)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          backgroundColor: isPlaying ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.04)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: '50%',
-          width: '44px',
-          height: '44px',
+          width: '32px',
+          height: '32px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           cursor: 'pointer',
-          boxShadow: isPlaying ? '0 0 15px rgba(227, 38, 82, 0.4)' : '0 4px 12px rgba(0,0,0,0.5)',
+          boxShadow: isPlaying ? '0 0 12px rgba(238, 212, 190, 0.3)' : 'none',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          backdropFilter: 'blur(8px)',
+          animation: isPlaying ? 'spinVinyl 6s linear infinite' : 'none',
         }}
       >
-        {isPlaying ? (
-          // Speaker icon with sound waves
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-          </svg>
-        ) : (
-          // Speaker mute icon
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ea0a9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <line x1="22" y1="9" x2="16" y2="15"></line>
-            <line x1="16" y1="9" x2="22" y2="15"></line>
-          </svg>
-        )}
+        <svg 
+          width="15" 
+          height="15" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke={isPlaying ? '#0c0d10' : 'var(--color-silver-mist)'} 
+          strokeWidth="2.5" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+          <path d="M9 18V5l12-2v13"></path>
+          <circle cx="6" cy="18" r="3"></circle>
+          <circle cx="18" cy="16" r="3"></circle>
+        </svg>
       </button>
+
+      {/* BGM Status & Waves */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <span 
+          style={{
+            fontSize: '0.6875rem',
+            fontWeight: '800',
+            letterSpacing: '0.1em',
+            color: isPlaying ? '#ffffff' : 'var(--color-silver-mist)',
+            userSelect: 'none',
+            transition: 'color 0.3s ease'
+          }}
+        >
+          {isPlaying ? 'BGM ON' : 'BGM OFF'}
+        </span>
+        
+        {isPlaying && (
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '2px', height: '10px' }}>
+            {[1, 2, 3].map((bar) => (
+              <div
+                key={bar}
+                style={{
+                  width: '2px',
+                  backgroundColor: 'var(--color-primary)',
+                  borderRadius: '99px',
+                  animation: `soundWave ${0.4 + bar * 0.12}s ease-in-out infinite alternate`,
+                  animationDelay: `${bar * 0.08}s`
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
 
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes soundWave {
-          0% { height: 4px; }
-          100% { height: 16px; }
+          0% { height: 3px; }
+          100% { height: 10px; }
+        }
+        @keyframes spinVinyl {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
         .sound-toggle-btn:hover {
           transform: scale(1.08);
-          border-color: rgba(255, 255, 255, 0.4);
+          border-color: rgba(255, 255, 255, 0.3);
+        }
+        .sound-controller-container:hover {
+          border-color: rgba(255, 255, 255, 0.15);
+          background-color: rgba(18, 19, 22, 0.85);
         }
       `}} />
     </div>
