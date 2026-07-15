@@ -120,8 +120,8 @@ const translations = {
     card_name_bottom: 'CEO / BRAND DIRECTOR',
     card_tip: '💡 Click the card to flip it over',
     card_back_title: 'LOCOCO PARTNERS',
-    card_back_subtitle: 'Group Purchase Partner Linking Brands & Creators',
-    card_back_description: 'How a great selection meets a great creator. Together, LOCOCO Partners makes it happen.',
+    card_back_subtitle: 'A Group-Buying Partner\nConnecting Brands and Creators',
+    card_back_description: 'The way great selections meet great creators —\nmade together by LOCOCO Partners.',
   }
 };
 

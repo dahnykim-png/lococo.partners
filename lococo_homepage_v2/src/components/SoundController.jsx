@@ -7,8 +7,8 @@ export default function SoundController() {
 
   // Initialize Audio
   useEffect(() => {
-    // Exact BGM: Tchaikovsky - Variations on a Rococo Theme, Op. 33 (Meneses, Talmi-RTVE 2008) MP3
-    const audio = new Audio('https://archive.org/download/rococo-vars-meneses-talvi-rtve-sp-2008/rococo%20vars%20%28meneses%2C%20talvi-rtve%20sp%202008%29.mp3');
+    // Exact BGM: Tchaikovsky - Variations on a Rococo Theme, Op. 33 (Meneses, Talmi-RTVE 2008) MP3 (Local Asset)
+    const audio = new Audio('/bgm_rococo.mp3');
     audio.loop = true;
     audio.volume = 0; // Start at 0 volume for fade-in
     audio.preload = 'auto';

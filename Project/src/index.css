@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Quicksand', 'Fredoka', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fredoka', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #0d0e12;
+  color: #e2e8f0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Custom progress bar styles */
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Soft glowing pulse animation */
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 4s infinite ease-in-out;
+}
+
+/* Floating animation for backgrounds */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}

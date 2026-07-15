@@ -189,14 +189,14 @@ export default function BusinessCard() {
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: '800', letterSpacing: '0.05em', color: '#8c583a' }}>
               {t('card_back_title')}
             </span>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', fontWeight: '700', color: '#222222', marginTop: '2px', wordBreak: 'keep-all' }}>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', fontWeight: '700', color: '#222222', marginTop: '2px', wordBreak: 'keep-all', whiteSpace: 'pre-line' }}>
               {t('card_back_subtitle')}
             </span>
             
             {/* Horizontal Line */}
             <div style={{ height: '1px', backgroundColor: 'rgba(140, 88, 58, 0.15)', width: '80%', margin: '14px 0' }} />
             
-            <p style={{ fontSize: '9px', color: '#555555', lineHeight: '1.6', wordBreak: 'keep-all', margin: 0 }}>
+            <p style={{ fontSize: '9px', color: '#555555', lineHeight: '1.6', wordBreak: 'keep-all', whiteSpace: 'pre-line', margin: 0 }}>
               {t('card_back_description')}
             </p>
           </div>
