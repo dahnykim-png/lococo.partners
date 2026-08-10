@@ -26,16 +26,44 @@ export default function Success() {
 
         const tokenToSave = accessToken || new URLSearchParams(window.location.search).get('access_token');
 
-        // Send POST request to Cloudflare Pages Function
-        const response = await fetch('/functions/save-token', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ access_token: tokenToSave })
-        });
+        // Endpoint retry candidates for maximum Cloudflare Pages compatibility
+        const endpoints = ['/api/save-token', '/save-token', '/functions/save-token'];
+        let response = null;
+        let lastError = null;
 
-        const data = await response.json();
+        for (const endpoint of endpoints) {
+          try {
+            const res = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ access_token: tokenToSave })
+            });
+
+            const contentType = res.headers.get('content-type') || '';
+            if (res.ok && contentType.includes('application/json')) {
+              response = res;
+              break;
+            } else if (contentType.includes('application/json')) {
+              response = res;
+              break;
+            }
+          } catch (e) {
+            lastError = e;
+          }
+        }
+
+        if (!response) {
+          throw new Error(lastError ? lastError.message : 'API 엔드포인트 응답 없음');
+        }
+
+        const rawText = await response.text();
+        let data;
+        try {
+          data = JSON.parse(rawText);
+        } catch (jsonErr) {
+          console.error('Non-JSON response received:', rawText);
+          throw new Error('서버에서 올바른 JSON 응답을 받지 못했습니다. (Cloudflare Pages Functions 경로 점검 필요)');
+        }
 
         if (response.ok && data.success) {
           setResultData(data);

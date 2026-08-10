@@ -1,4 +1,4 @@
-import { handleSaveToken } from './save-token-core.js';
+import { handleSaveToken } from '../save-token-core.js';
 
 export async function onRequestPost(context) {
   return handleSaveToken(context);

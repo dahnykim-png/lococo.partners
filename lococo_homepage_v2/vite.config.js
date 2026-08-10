@@ -18,7 +18,17 @@ export default defineConfig(({ mode }) => {
         name: 'cloudflare-functions-dev',
         configureServer(server) {
           server.middlewares.use(async (req, res, next) => {
-            if ((req.url === '/functions/save-token' || req.url === '/functions/save-token.js') && req.method === 'POST') {
+            const urlPath = (req.url || '').split('?')[0];
+            const isSaveTokenEndpoint = [
+              '/api/save-token',
+              '/api/save-token.js',
+              '/save-token',
+              '/save-token.js',
+              '/functions/save-token',
+              '/functions/save-token.js'
+            ].includes(urlPath);
+
+            if (isSaveTokenEndpoint && req.method === 'POST') {
               let body = '';
               req.on('data', chunk => { body += chunk; });
               req.on('end', async () => {
