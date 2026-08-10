@@ -1,8 +1,9 @@
 {
   "name": "lococo-partners",
-  "main": "functions/[[path]].js",
+  "main": "functions/worker.js",
   "compatibility_date": "2024-09-23",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS"
   }
 }

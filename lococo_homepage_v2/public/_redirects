@@ -1,7 +1,1 @@
-/diagnosis /index.html 200
-/diagnosis/* /index.html 200
-/success /index.html 200
-/success/* /index.html 200
-/channel-diagnosis /index.html 200
-/channel-diagnosis/* /index.html 200
-/* /index.html 200
+# Cloudflare Workers SPA routing is handled via wrangler.json single-page-app setting
