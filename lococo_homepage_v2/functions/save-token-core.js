@@ -142,6 +142,64 @@ export async function handleSaveToken(context) {
       targetInstagramAccount: targetInstagramAccount ? targetInstagramAccount.id : 'NONE'
     });
 
+    // Step 5: Save seller diagnosis record to Cloudflare D1 database (diagnosis_submissions)
+    let d1Saved = false;
+    let d1Error = null;
+
+    const dbBinding = (context && context.env) ? (context.env.DB || context.env.lococo_diagnosis_db) : null;
+
+    const igId = targetInstagramAccount ? (targetInstagramAccount.id || '') : '';
+    const igUsername = targetInstagramAccount ? (targetInstagramAccount.username || targetInstagramAccount.name || '') : '';
+    const pageId = targetInstagramAccount ? (targetInstagramAccount.linkedPageId || '') : '';
+    const pageName = targetInstagramAccount ? (targetInstagramAccount.linkedPageName || '') : '';
+
+    const rawJson = JSON.stringify({
+      user: meData,
+      targetInstagramAccount,
+      pages,
+      stepResults,
+      rawAccountsData: accountsData,
+      rawMeData: meData,
+      rawPermissionsData: permsData
+    });
+
+    if (dbBinding) {
+      try {
+        await dbBinding.prepare(`
+          CREATE TABLE IF NOT EXISTS diagnosis_submissions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            instagram_business_account_id TEXT,
+            instagram_username TEXT,
+            page_name TEXT,
+            page_id TEXT,
+            raw_response_json TEXT,
+            submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            synced_to_core INTEGER DEFAULT 0
+          )
+        `).run();
+
+        await dbBinding.prepare(`
+          INSERT INTO diagnosis_submissions 
+          (instagram_business_account_id, instagram_username, page_name, page_id, raw_response_json, synced_to_core)
+          VALUES (?, ?, ?, ?, ?, 0)
+        `).bind(
+          igId,
+          igUsername,
+          pageName,
+          pageId,
+          rawJson
+        ).run();
+
+        d1Saved = true;
+        console.log('[save-token-core] Saved seller diagnosis record to Cloudflare D1 diagnosis_submissions');
+      } catch (dbErr) {
+        console.error('[save-token-core] Error writing to Cloudflare D1:', dbErr);
+        d1Error = dbErr.message;
+      }
+    } else {
+      console.warn('[save-token-core] D1 binding missing in context.env. Logging raw JSON to prevent data loss:', rawJson.substring(0, 200));
+    }
+
     return new Response(
       JSON.stringify({
         success: true,
@@ -152,6 +210,8 @@ export async function handleSaveToken(context) {
         targetInstagramAccount,
         pages,
         stepResults,
+        d1Saved,
+        d1Error,
         rawAccountsData: accountsData,
         rawMeData: meData,
         rawPermissionsData: permsData
@@ -166,3 +226,5 @@ export async function handleSaveToken(context) {
     );
   }
 }
+
+

@@ -5,5 +5,19 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "lococo-diagnosis-db",
+      "database_id": "df2275f8-8e51-4197-bb05-cfa9f619b8b3"
+    },
+    {
+      "binding": "lococo_diagnosis_db",
+      "database_name": "lococo-diagnosis-db",
+      "database_id": "df2275f8-8e51-4197-bb05-cfa9f619b8b3"
+    }
+  ]
 }
+
+
