@@ -1,0 +1,7 @@
+/diagnosis /index.html 200
+/diagnosis/* /index.html 200
+/success /index.html 200
+/success/* /index.html 200
+/channel-diagnosis /index.html 200
+/channel-diagnosis/* /index.html 200
+/* /index.html 200

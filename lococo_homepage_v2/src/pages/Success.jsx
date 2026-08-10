@@ -210,7 +210,7 @@ export default function Success() {
             </p>
 
             <button
-              onClick={() => { window.location.href = '/diagnosis'; }}
+              onClick={() => { window.location.href = '/#/diagnosis'; }}
               style={{
                 marginTop: '16px',
                 padding: '14px 32px',

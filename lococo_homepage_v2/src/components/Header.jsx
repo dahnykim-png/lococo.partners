@@ -94,11 +94,10 @@ export default function Header() {
             ))}
 
             <a
-              href="/diagnosis"
+              href="/#/diagnosis"
               onClick={(e) => {
                 e.preventDefault();
-                window.history.pushState({}, '', '/diagnosis');
-                window.dispatchEvent(new Event('popstate'));
+                window.location.hash = '/diagnosis';
               }}
               style={{
                 textDecoration: 'none',
