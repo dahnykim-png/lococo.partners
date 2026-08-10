@@ -1,5 +1,15 @@
 export async function onRequest(context) {
   const { request, env } = context;
+  return handleFetch(request, env);
+}
+
+export default {
+  async fetch(request, env, ctx) {
+    return handleFetch(request, env);
+  }
+};
+
+async function handleFetch(request, env) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
@@ -9,18 +19,20 @@ export async function onRequest(context) {
     pathname.startsWith('/save-token') || 
     pathname === '/functions/save-token'
   ) {
-    return env.ASSETS.fetch(request);
+    if (env && env.ASSETS) return env.ASSETS.fetch(request);
+    return fetch(request);
   }
 
   // Pass static assets with extensions (.js, .css, .svg, .mp3, etc.)
   if (pathname.includes('.') && !pathname.endsWith('.html')) {
-    return env.ASSETS.fetch(request);
+    if (env && env.ASSETS) return env.ASSETS.fetch(request);
+    return fetch(request);
   }
 
   // SPA Fallback: Serve /index.html with HTTP 200 OK for all page routes (/diagnosis, /success, etc.)
   try {
     const indexUrl = new URL('/index.html', request.url);
-    const indexResponse = await env.ASSETS.fetch(indexUrl);
+    const indexResponse = (env && env.ASSETS) ? await env.ASSETS.fetch(indexUrl) : await fetch(indexUrl);
     
     return new Response(indexResponse.body, {
       status: 200,
@@ -30,6 +42,7 @@ export async function onRequest(context) {
       }
     });
   } catch (err) {
-    return env.ASSETS.fetch(request);
+    if (env && env.ASSETS) return env.ASSETS.fetch(request);
+    return fetch(request);
   }
 }
