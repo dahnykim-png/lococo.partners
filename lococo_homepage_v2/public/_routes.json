@@ -1,7 +1,8 @@
 {
   "version": 1,
   "include": [
-    "/save-token"
+    "/save-token",
+    "/functions/*"
   ],
   "exclude": []
 }
