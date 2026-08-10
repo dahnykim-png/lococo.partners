@@ -1,9 +1,19 @@
 {
   "version": 1,
   "include": [
-    "/api/*",
-    "/save-token",
-    "/functions/*"
+    "/*"
   ],
-  "exclude": []
+  "exclude": [
+    "/assets/*",
+    "/*.js",
+    "/*.css",
+    "/*.svg",
+    "/*.png",
+    "/*.jpg",
+    "/*.mp3",
+    "/*.ico",
+    "/*.json",
+    "/*.txt",
+    "/*.xml"
+  ]
 }
