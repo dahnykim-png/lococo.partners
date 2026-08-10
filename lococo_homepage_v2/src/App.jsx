@@ -3,14 +3,36 @@ import Header from './components/Header';
 import OrgChart from './components/OrgChart';
 import PortfolioGallery from './components/PortfolioGallery';
 import BusinessCard from './components/BusinessCard';
-import Logo from './components/Logo';
 import VendorVisual from './components/VendorVisual';
 import SoundController from './components/SoundController';
 import { useLanguage } from './contexts/LanguageContext';
+import ChannelDiagnosis from './pages/ChannelDiagnosis';
+import Success from './pages/Success';
+
 
 export default function App() {
   const { t, language } = useLanguage();
   const [showToast, setShowToast] = React.useState(false);
+  const getCombinedPath = () => {
+    const path = window.location.pathname;
+    const hash = window.location.hash ? window.location.hash.replace('#', '') : '';
+    return hash || path;
+  };
+
+  const [currentPath, setCurrentPath] = React.useState(getCombinedPath());
+
+  React.useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(getCombinedPath());
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
 
   const handleEmailClick = (e) => {
     e.preventDefault();
@@ -26,10 +48,31 @@ export default function App() {
     }
   };
 
+  // Route: /success /success/
+  if (currentPath.startsWith('/success')) {
+    return (
+      <div style={{ backgroundColor: 'var(--color-pitch-black)', color: '#ffffff', minHeight: '100vh' }}>
+        <Header />
+        <Success />
+      </div>
+    );
+  }
+
+  // Route: /diagnosis /channel-diagnosis
+  if (currentPath.startsWith('/diagnosis') || currentPath.startsWith('/channel-diagnosis')) {
+    return (
+      <div style={{ backgroundColor: 'var(--color-pitch-black)', color: '#ffffff', minHeight: '100vh' }}>
+        <Header />
+        <ChannelDiagnosis />
+      </div>
+    );
+  }
+
   return (
     <div style={{ backgroundColor: 'var(--color-pitch-black)', color: '#ffffff', minHeight: '100vh' }}>
       {/* Sticky Global Components */}
       <Header />
+
 
       {/* ========================================================================= */}
       {/* SECTION 1. About US */}

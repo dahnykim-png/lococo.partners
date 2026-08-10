@@ -60,57 +60,85 @@ export default function Header() {
         </span>
       </a>
 
-      {/* Navigation Links and Language Toggle Wrapper */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        <nav style={{ display: 'flex', gap: '32px' }}>
-          {[
-            { id: 'about', label: t('nav_about') },
-            { id: 'service', label: t('nav_service') },
-            { id: 'portfolio', label: t('nav_portfolio') },
-            { id: 'contact', label: t('nav_contact') }
-          ].map((item) => (
+        {/* Navigation Links and Language Toggle Wrapper */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+            {[
+              { id: 'about', label: t('nav_about') },
+              { id: 'service', label: t('nav_service') },
+              { id: 'portfolio', label: t('nav_portfolio') },
+              { id: 'contact', label: t('nav_contact') }
+            ].map((item) => (
+              <a
+                key={item.id}
+                href={window.location.pathname === '/' ? `#${item.id}` : `/#${item.id}`}
+                onClick={(e) => {
+                  if (window.location.pathname !== '/') {
+                    window.location.href = `/#${item.id}`;
+                  } else {
+                    handleNavClick(e, item.id);
+                  }
+                }}
+                className="nav-link"
+                style={{
+                  textDecoration: 'none',
+                  fontSize: '0.875rem',
+                  fontWeight: '500',
+                  color: 'var(--color-silver-mist)',
+                  transition: 'color 0.2s ease',
+                  letterSpacing: '0.02em'
+                }}
+              >
+                {item.label}
+              </a>
+            ))}
+
             <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => handleNavClick(e, item.id)}
-              className="nav-link"
+              href="/diagnosis"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', '/diagnosis');
+                window.dispatchEvent(new Event('popstate'));
+              }}
               style={{
                 textDecoration: 'none',
                 fontSize: '0.875rem',
-                fontWeight: '500',
-                color: 'var(--color-silver-mist)',
-                transition: 'color 0.2s ease',
-                letterSpacing: '0.02em'
+                fontWeight: '600',
+                color: '#ffffff',
+                background: 'linear-gradient(135deg, #833ab4, #fd1d1d)',
+                padding: '6px 14px',
+                borderRadius: '8px',
+                transition: 'opacity 0.2s ease'
               }}
             >
-              {item.label}
+              채널 진단받기
             </a>
-          ))}
-        </nav>
+          </nav>
 
-        {/* Language Toggle Capsule Button */}
-        <button
-          onClick={toggleLanguage}
-          className="lang-toggle-btn"
-          style={{
-            background: 'rgba(255, 255, 255, 0.04)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRadius: '99px',
-            padding: '6px 16px',
-            cursor: 'pointer',
-            fontSize: '0.75rem',
-            fontWeight: '700',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
-          }}
-        >
-          <span style={{ color: language === 'ko' ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.4)' }}>KO</span>
-          <span style={{ color: 'rgba(255, 255, 255, 0.15)' }}>/</span>
-          <span style={{ color: language === 'en' ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.4)' }}>EN</span>
-        </button>
-      </div>
+          {/* Language Toggle Capsule Button */}
+          <button
+            onClick={toggleLanguage}
+            className="lang-toggle-btn"
+            style={{
+              background: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '99px',
+              padding: '6px 16px',
+              cursor: 'pointer',
+              fontSize: '0.75rem',
+              fontWeight: '700',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
+          >
+            <span style={{ color: language === 'ko' ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.4)' }}>KO</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.15)' }}>/</span>
+            <span style={{ color: language === 'en' ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.4)' }}>EN</span>
+          </button>
+        </div>
+
 
       <style dangerouslySetInnerHTML={{__html: `
         .nav-link:hover {
