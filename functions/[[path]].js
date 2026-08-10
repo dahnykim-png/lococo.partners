@@ -1,29 +1,31 @@
+import { handleSaveToken } from './save-token-core.js';
+
 export async function onRequest(context) {
-  const { request, env } = context;
-  return handleFetch(request, env);
+  return handleFetch(context.request, context.env, context);
 }
 
 export default {
   async fetch(request, env, ctx) {
-    return handleFetch(request, env);
+    return handleFetch(request, env, ctx);
   }
 };
 
-async function handleFetch(request, env) {
+async function handleFetch(request, env, ctx) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
-  // Pass API endpoints to specific handlers or static assets
+  // Handle API token exchange endpoints directly
   if (
-    pathname.startsWith('/api/') || 
-    pathname.startsWith('/save-token') || 
-    pathname === '/functions/save-token'
+    pathname === '/api/save-token' || 
+    pathname === '/save-token' || 
+    pathname === '/functions/save-token' ||
+    pathname.startsWith('/api/save-token') ||
+    pathname.startsWith('/functions/save-token')
   ) {
-    if (env && env.ASSETS) return env.ASSETS.fetch(request);
-    return fetch(request);
+    return handleSaveToken({ request, env, ctx });
   }
 
-  // Pass static assets with extensions (.js, .css, .svg, .mp3, etc.)
+  // Pass static assets (.js, .css, .svg, .mp3, etc.)
   if (pathname.includes('.') && !pathname.endsWith('.html')) {
     if (env && env.ASSETS) return env.ASSETS.fetch(request);
     return fetch(request);
