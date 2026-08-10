@@ -1,0 +1,8 @@
+{
+  "name": "lococo-partners-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd lococo_homepage_v2 && npm install && npm run build && node -e \"const fs=require('fs'); fs.cpSync('dist', '../dist', {recursive: true});\""
+  }
+}
