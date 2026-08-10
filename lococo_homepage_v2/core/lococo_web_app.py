@@ -12,6 +12,16 @@ import os
 import sys
 from lococo_db_handler import LococoDBHandler
 from lococo_ml_predictor import LococoMLPredictor
+from lococo_d1_sync import sync_d1_to_core
+
+# 앱 시작 시 Cloudflare D1 미동기화 셀러 진단 데이터 자동 동기화 실행
+try:
+    sync_res = sync_d1_to_core()
+    if sync_res and sync_res.get("synced_count", 0) > 0:
+        print(f"[LOCOCO App Startup] Cloudflare D1에서 {sync_res['synced_count']}건의 셀러 데이터 자동 동기화 완료")
+except Exception as sync_err:
+    print(f"[LOCOCO App Startup] D1 Auto Sync Warning: {sync_err}")
+
 
 # ----------------- 2. LOCOCO 대시보드 테마 및 CSS 스타일 -----------------
 def apply_lococo_theme():
