@@ -1,5 +1,33 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import fs from 'fs'
+import path from 'path'
+
+function cloudflareSpaPlugin() {
+  return {
+    name: 'cloudflare-spa-plugin',
+    closeBundle() {
+      try {
+        const distDir = path.resolve(__dirname, 'dist');
+        const indexHtmlPath = path.join(distDir, 'index.html');
+        if (fs.existsSync(indexHtmlPath)) {
+          const indexHtmlContent = fs.readFileSync(indexHtmlPath, 'utf-8');
+          const routes = ['diagnosis', 'channel-diagnosis', 'success'];
+          routes.forEach(route => {
+            const routeDir = path.join(distDir, route);
+            if (!fs.existsSync(routeDir)) {
+              fs.mkdirSync(routeDir, { recursive: true });
+            }
+            fs.writeFileSync(path.join(routeDir, 'index.html'), indexHtmlContent, 'utf-8');
+          });
+          console.log('[cloudflareSpaPlugin] Successfully generated static route index.html fallbacks for:', routes);
+        }
+      } catch (err) {
+        console.error('[cloudflareSpaPlugin] Error generating SPA routes:', err);
+      }
+    }
+  };
+}
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -14,6 +42,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
+      cloudflareSpaPlugin(),
       {
         name: 'cloudflare-functions-dev',
         configureServer(server) {
