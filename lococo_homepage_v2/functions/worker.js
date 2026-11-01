@@ -5,6 +5,17 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
+    // 0. Google Search Console HTML file verification (direct 200 OK without .html redirect)
+    if (pathname === '/googlecdd3a1183264eef5.html') {
+      return new Response('google-site-verification: googlecdd3a1183264eef5.html', {
+        status: 200,
+        headers: {
+          'content-type': 'text/html; charset=utf-8',
+          'cache-control': 'no-cache',
+        },
+      });
+    }
+
     // 1. Meta OAuth API Token Exchange endpoints
     if (
       pathname === '/api/save-token' || 
