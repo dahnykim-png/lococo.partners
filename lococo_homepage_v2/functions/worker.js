@@ -6,7 +6,7 @@ export default {
     const pathname = url.pathname;
 
     // 0. Google Search Console HTML file verification (direct 200 OK without .html redirect)
-    if (pathname === '/googlecdd3a1183264eef5.html') {
+    if (pathname === '/googlecdd3a1183264eef5.html' || pathname === '/googlecdd3a1183264eef5') {
       return new Response('google-site-verification: googlecdd3a1183264eef5.html', {
         status: 200,
         headers: {
