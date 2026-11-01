@@ -46,6 +46,8 @@ const translations = {
     footer_tagline: 'Connect Brands, Inspire Creators.',
     footer_company: '상호: 로코코 ㅣ 대표: KIM DAHN l 사업자등록번호: 335-30-01862',
     footer_contact: '이메일: lococo.partners@gmail.com l 연락처: 010-4468-8999',
+    footer_address_ko: '사업장 주소: 경기도 양평군 강상면 다래길106번길 26',
+    footer_address_en: 'Business Address: 26 Darae-gil 106beon-gil, Gangsang-myeon, Yangpyeong-gun, Gyeonggi-do, 12573, Republic of Korea',
     footer_copyright: 'Copyright © 로코코파트너스 (LOCOCO Partners). All Rights Reserved.',
 
     // Toast
@@ -106,6 +108,8 @@ const translations = {
     footer_tagline: 'Connect Brands, Inspire Creators.',
     footer_company: 'Company: LOCOCO | CEO: KIM DAHN | Business Registration No: 335-30-01862',
     footer_contact: 'Email: lococo.partners@gmail.com | Contact: +82-10-4468-8999',
+    footer_address_ko: '사업장 주소: 경기도 양평군 강상면 다래길106번길 26',
+    footer_address_en: 'Business Address: 26 Darae-gil 106beon-gil, Gangsang-myeon, Yangpyeong-gun, Gyeonggi-do, 12573, Republic of Korea',
     footer_copyright: 'Copyright © LOCOCO Partners. All Rights Reserved.',
 
     // Toast

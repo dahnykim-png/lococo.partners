@@ -480,9 +480,11 @@ export default function App() {
 
           {/* Company Details (Legal) */}
           <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
-            <div>
+            <div style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
               <p>{t('footer_company')}</p>
               <p>{t('footer_contact')}</p>
+              <p>{t('footer_address_ko')}</p>
+              <p>{t('footer_address_en')}</p>
             </div>
             <div style={{ textAlign: 'right' }}>
               <p>{t('footer_copyright')}</p>
